@@ -9,6 +9,13 @@ class Produtos{
         $this->mysql = $mysql;
     }
 
+    public function adicionar(string $produto, string $quantidade):void {
+
+        $insereProduto = $this->mysql->prepare('INSERT INTO controledosestoques (produto, quantidade) VALUES (?,?)');  
+        $insereProduto->bind_param('ss', $produto, $quantidade);   
+        $insereProduto->execute();   
+    }
+
     public function exibirTodos():array{
 
         $resultado = $this->mysql->query('SELECT id, produto, quantidade FROM controledosestoques');
