@@ -16,7 +16,8 @@ body {
 .quantidade{
   font-size: 20px;
 }
-a {
+
+a{
   font-size: 20px;
   text-decoration: none;
 }
@@ -28,10 +29,17 @@ button{
   font-weight: bold;
   border: solid 1px black;
 }
-
 button:hover{
   font-size: 14px;
   cursor: pointer;
+}
+.botao{
+  font-size: 14px;
+  padding: 5px;
+  background-color: rgb(65, 113, 158);
+  color: #ffffff;
+  font-weight: bold;
+  border: solid 1px black;
 }
 
 .botaoVoltar{
@@ -41,6 +49,17 @@ button:hover{
   padding: 5px;
   background-color: rgb(65, 113, 158);
   color: #ffffff;
+  font-weight: bold;
+  border: solid 1px black;
+}
+.botaoAdicionar{
+  font-size: 14px;
+  display: block;
+  width: max-content;
+  padding: 5px;  
+  margin: 3px 115px;
+  color: rgb(65, 113, 158);
+  background-color: #ffffff;
   font-weight: bold;
   border: solid 1px black;
 }
