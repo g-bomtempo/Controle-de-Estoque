@@ -30,6 +30,7 @@ $dados = $materiais->exibirTodos();
                     <hr size="1">
         <?php endforeach;?>                 
     </div>
+    <a class="botaoAdicionar" href="adicionar_Produto.php">Adicionar Produto</a>
 </body>
 
 </html>
