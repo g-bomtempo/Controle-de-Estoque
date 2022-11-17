@@ -2,35 +2,44 @@
 
 require_once "config.php";
 include_once "produtos.php";
+require 'redireciona.php';
 
-$materiais = new produtos($mysql);
-$dados = $materiais->exibirTodos();
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $artigo = new Produtos($mysql);
+    $artigo->adicionar($_POST['produto'], $_POST['quantidade']);
+
+    redireciona('index.php');
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>Controle de Estoque</title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
 </head>
 
 <body>
     <div id="container">
-        <h1>Controle de Estoque</h1>        
-            <h2><?php foreach ($dados as $materiais):?>
-                <a href="detalhado.php?id=<?php echo $materiais['id']; ?>"><?php echo $materiais['produto']; ?></a>
-            </h2>
-            
-                    <p class="quantidade"><?php echo $materiais['quantidade'];?></p>
-                    <button>Adicionar</button>
-                    <button>Remover</button> 
-                    <hr size="1">
-        <?php endforeach;?>                 
+        <h1>Adicionar Produto</h1>
+        <form action="adicionar_Produto.php" method="post">
+            <p>
+                <label for="">Digite o Produto</label>
+                <input class="campo-form" type="text" name="produto" id="produto" />
+            </p>
+            <p>
+                <label for="">Digite a quantidade do Produto</label>
+                <textarea class="campo-form" type="text" name="quantidade" id="quantidade"></textarea>
+            </p>
+            <p>
+                <button class="botao">Criar Produto</button>
+                <a class="botao" href="index.php">Voltar</a>
+            </p>
+        </form>
     </div>
-    <a class="botaoAdicionar" href="adicionar_Produto.php">Adicionar Produto</a>
 </body>
 
 </html>
