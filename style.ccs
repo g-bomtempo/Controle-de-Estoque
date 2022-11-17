@@ -57,7 +57,7 @@ button:hover{
   display: block;
   width: max-content;
   padding: 5px;  
-  margin: 3px 115px;
+  margin: 3px 197px;
   color: rgb(65, 113, 158);
   background-color: #ffffff;
   font-weight: bold;
