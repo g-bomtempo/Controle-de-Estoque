@@ -16,6 +16,13 @@ class Produtos{
         $insereProduto->execute();   
     }
 
+    public function remover (string $id):void{
+        $removerArtigo = $this->mysql->prepare('DELETE FROM controledosestoques WHERE id = ?');  
+        $removerArtigo->bind_param('s', $id);   
+        $removerArtigo->execute(); 
+
+    }
+
     public function exibirTodos():array{
 
         $resultado = $this->mysql->query('SELECT id, produto, quantidade FROM controledosestoques');
