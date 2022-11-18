@@ -27,6 +27,7 @@ $dados = $materiais->exibirTodos();
                     <p class="quantidade"><?php echo $materiais['quantidade'];?></p>
                     <button>+</button>
                     <button>-</button> 
+                    <a href="editar_Produto.php?id=<?php echo $materiais['id'];?>"><button>Editar</button></a>
                     <a href="excluir_Produto.php?id=<?php echo $materiais['id'];?>"><button>Remover</button></a>
                     <hr size="1">
         <?php endforeach;?>                 
