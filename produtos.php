@@ -23,6 +23,13 @@ class Produtos{
 
     }
 
+    public function editar (string $id, string $produto, string $quantidade):void{
+        $editarProduto = $this->mysql->prepare('UPDATE controledosestoques SET produto = ?, quantidade = ? WHERE id = ?');
+        $editarProduto->bind_param('sss', $produto, $quantidade, $id);
+        $editarProduto->execute();
+
+    }
+
     public function exibirTodos():array{
 
         $resultado = $this->mysql->query('SELECT id, produto, quantidade FROM controledosestoques');
