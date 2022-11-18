@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             </p>
             <p>
                 <label for="">Digite a quantidade do Produto</label>
-                <textarea class="campo-form" type="text" name="quantidade" id="quantidade"></textarea>
+                <textarea class="campo-form" type="number" name="quantidade" id="quantidade"></textarea>
             </p>
             <p>
                 <button class="botao">Criar Produto</button>
