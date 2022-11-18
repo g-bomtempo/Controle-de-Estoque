@@ -7,12 +7,14 @@ require 'redireciona.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $materiais = new Produtos($mysql);  
-    $materiais->remover($_POST['id']);
-
-    $dados = $materiais->exibirTodos();
+    $materiais->remover($_POST['id']);     
 
     redireciona('index.php');
 }
+
+$material = new Produtos($mysql); 
+$produto = $material->encontrarPorId($_GET['id']); 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,13 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <body>
     <div id="container">
-        <h1>Você realmente deseja excluir o produto?</h1>        
-            <form method="post" action="excluir_Produto.php">
-            <p>
-                <input type="hidden" name="id" value="<?php echo $_GET['id'];?>" />
-                <button class="botao">Excluir</button>
-            </p>
-            </form>        
+        <h1>Você realmente deseja excluir o produto?</h1>  
+            <h2><?php echo $produto['produto']; ?></h2>      
+                <form method="post" action="excluir_Produto.php">
+                <p>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id'];?>" />
+                    <button class="botao">Excluir</button>
+                </p>
+                </form>        
     </div>
 </body>
 
