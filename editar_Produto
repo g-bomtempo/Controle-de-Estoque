@@ -1,0 +1,50 @@
+<?php
+
+require_once "config.php";
+include_once "produtos.php";
+require 'redireciona.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $materiais = new Produtos($mysql);  
+    $materiais->editar($_POST['id'], $_POST['produto'], $_POST['quantidade']);    
+    redireciona('index.php');    
+}
+
+$material = new Produtos($mysql);
+$art = $material->encontrarPorId($_GET['id']);
+
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Você realmente deseja editar o produto <?php echo $art['produto'] ?></h1>
+        <form action="editar_Produto.php" method="post">
+            <p>
+                <label for="produto">Digite o novo Produto</label>
+                <input class="campo-form" type="text" name="produto" id="produto" value="<?php echo $art['produto']; ?>" />
+            </p>
+            <p>
+                <label for="quantidade">Digite a nova quantidade do produto</label>
+                <textarea class="campo-form" type="number" name="quantidade" id="quantidade"><?php echo $art['quantidade']; ?></textarea>
+            </p>
+            <p>
+                <input type="hidden" name="id" value="<?php echo $art['id']; ?>" />                
+            </p>
+            <p>
+                <button class="botao">Editar Produto</button>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
