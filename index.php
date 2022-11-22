@@ -22,11 +22,10 @@ $dados = $materiais->exibirTodos();
         <h1>Controle de Estoque</h1>        
             <h2><?php foreach ($dados as $materiais):?>
                 <a href="detalhado.php?id=<?php echo $materiais['id']; ?>"><?php echo $materiais['produto']; ?></a>
-            </h2>
-            
+            </h2>            
                     <p class="quantidade"><?php echo $materiais['quantidade'];?></p>
-                    <button>+</button>
-                    <button>-</button> 
+                    <a href="adiciona_Unidades.php?id=<?php echo $materiais['id'];?>"><button>+</button></a>
+                    <a href="diminui_Unidade.php?id=<?php echo $materiais['id'];?>"><button>-</button></a>
                     <a href="editar_Produto.php?id=<?php echo $materiais['id'];?>"><button>Editar</button></a>
                     <a href="excluir_Produto.php?id=<?php echo $materiais['id'];?>"><button>Remover</button></a>
                     <hr size="1">
@@ -34,5 +33,4 @@ $dados = $materiais->exibirTodos();
     </div>
     <a class="botaoAdicionar" href="adicionar_Produto.php">Adicionar Produto</a>
 </body>
-
 </html>
