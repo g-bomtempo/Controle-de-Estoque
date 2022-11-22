@@ -1,0 +1,11 @@
+<?php
+
+require_once "config.php";
+include_once "produtos.php";
+require 'redireciona.php';
+
+$materiais = new Produtos($mysql);  
+$materiais->adicionaUnidade($_GET['id']);  
+
+redireciona('index.php');
+?>
