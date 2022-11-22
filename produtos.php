@@ -9,6 +9,18 @@ class Produtos{
         $this->mysql = $mysql;
     }
 
+    public function adicionaUnidade(string $id){
+        $umaUnidade = $this->mysql->prepare('UPDATE controledosestoques SET quantidade = quantidade + 1 where id = ?');  
+        $umaUnidade->bind_param('s', $id);   
+        $umaUnidade->execute();  
+    }
+
+    public function diminuiUnidade(string $id){
+        $umaUnidade = $this->mysql->prepare('UPDATE controledosestoques SET quantidade = quantidade - 1 where id = ?');  
+        $umaUnidade->bind_param('s', $id);   
+        $umaUnidade->execute();  
+    }
+
     public function adicionar(string $produto, string $quantidade):void {
 
         $insereProduto = $this->mysql->prepare('INSERT INTO controledosestoques (produto, quantidade) VALUES (?,?)');  
